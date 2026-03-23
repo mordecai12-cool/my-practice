@@ -11,5 +11,5 @@ func fixAOrAn(word string) string {
 	return word
 }
 func main() {
-	fmt.Println(fixAOrAn("there it was. A amazing rock. A honest man. A book"))
+	fmt.Println(fixAOrAn("there was. A amazing rock. A honest man. A book"))
 }
