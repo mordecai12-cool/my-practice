@@ -11,4 +11,5 @@ func binToDecimal(binStr string) (int64, error) {
 func main() {
 	fmt.Println(binToDecimal("10"))
 	fmt.Println(binToDecimal("1010"))
+	fmt.Println(binToDecimal("77"))
 }
