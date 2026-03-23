@@ -13,5 +13,5 @@ func capLastL(s string) string {
 	return strings.Join(word, " ")
 }
 func main() {
-	fmt.Println(capLastL("Hello World Main"))
+	fmt.Println(capLastL("Hello Word Main"))
 }
