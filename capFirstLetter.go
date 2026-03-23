@@ -11,4 +11,5 @@ func capFirstLetter(words string) string {
 func main() {
 	fmt.Println(capFirstLetter("hELLO"))
 	fmt.Println(capFirstLetter("WORLD"))
+	fmt.Println(capFirstLetter("aWeSoMe"))
 }
