@@ -9,6 +9,7 @@ func fixArticles(s []string) string {
 	word := strings.Join(s, " ")
 	word = strings.ReplaceAll(word, " !", "!")
 	word = strings.ReplaceAll(word, " ,", ",")
+	word = strings.ReplaceAll(word, " .", ".")
 	return word
 }
 func main() {
