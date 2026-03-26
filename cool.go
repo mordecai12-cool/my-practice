@@ -6,12 +6,11 @@ import (
 )
 
 func main() {
-
 	var word, op string
-	fmt.Print("Enter word: ")
+	fmt.Println("enter word:")
 	fmt.Scanln(&word)
 	for {
-		fmt.Print("Operation (lastChar, capitalize, deleteIndex): ")
+		fmt.Println("operation (lastChar, capitalize, deleteIndex): ")
 		fmt.Scanln(&op)
 
 		switch op {
@@ -21,11 +20,10 @@ func main() {
 			fmt.Println(strings.ToUpper(word))
 		case "deleteIndex":
 			var i int
-			fmt.Print("Enter Index: ")
+			fmt.Println("Enter index:")
 			fmt.Scanln(&i)
-
 			if i < 0 || i >= len(word) {
-				fmt.Println("Invalid index")
+				fmt.Println("invalid index")
 				main()
 				return
 			}
