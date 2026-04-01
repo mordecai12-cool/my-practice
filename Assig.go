@@ -2,33 +2,35 @@ package main
 
 import (
 	"fmt"
+	"strconv"
 )
 
-/*
-	func main() {
-		var Name = "marvy"
-		var Age = 19
-		var City = "Canada"
-		var Email = "marvy@gmail.com"
-
-		fmt.Println("Name :", Name)
-		fmt.Println("Age :", Age)
-		fmt.Println("City :", City)
-		fmt.Println("Email :", Email)
-	}
-*/
-/*func main() {
-	var name string = "sunshine"
-	var price float64 = 3.457
-	var quality int = 70
-	var stock bool = true
-
-	fmt.Println("name :", name)
-	fmt.Println("price :", price)
-	fmt.Println("quality :", quality)
-	fmt.Println("stock :", stock)
-}
-*/
 func main() {
-	
+	var age string
+	var option string
+	for {
+		fmt.Print("Enter age: ")
+		fmt.Scanln(&age)
+		age, err := strconv.Atoi(age)
+		if err != nil {
+			fmt.Println("invalid input")
+			continue
+		} 
+
+		switch {
+		case age < 18:
+			fmt.Println("child")
+		case age >= 18:
+			fmt.Println("adult")
+		default:
+			fmt.Println("invalid input")
+			continue
+		}
+		fmt.Println("choose option(continue, exit): ")
+		fmt.Scanln(&option)
+		if option == "exit" {
+			fmt.Println("good bye!")
+			break
+		}
+	}
 }
