@@ -7,12 +7,15 @@ import (
 func main() {
 	var num1, num2 int
 	var op string
+	var option string
 	for {
 		fmt.Println("Enter first number :")
 		fmt.Scanln(&num1)
 
 		fmt.Println("Enter second number :")
 		fmt.Scanln(&num2)
+
+		
 
 		fmt.Println("operator (+,-,*,/) :")
 		fmt.Scanln(&op)
@@ -31,6 +34,11 @@ func main() {
 		case "/":
 			fmt.Println(num1, "/", num2, "=", num1/num2)
 		}
-		break
+	    fmt.Println("choose option(continue, exit) :")
+		fmt.Scanln(&option)
+		if option == "exit" {
+			fmt.Println("good bye! thanks for your service")
+			break
+		}
 	}
 }
