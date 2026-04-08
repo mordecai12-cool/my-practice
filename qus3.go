@@ -1,20 +1,21 @@
-package main 
+package main
 
 import (
 	"fmt"
-	"strings"
 	"strconv"
+	"strings"
 )
+
 func marvy(words []string) []string {
 	for i := 0; i < len(words); i++ {
 		if words[i] == "(up)" {
 			if i > 0 {
-			words[i-1] = strings.ToUpper(words[i-1]) 
+				words[i-1] = strings.ToUpper(words[i-1])
 			}
-			words = append(words[:i], words[i+1:]...) 
+			words = append(words[:i], words[i+1:]...)
 			i--
-		} else if words[i] == "(up" && i+1 < len(words) {
-			result := strings.TrimRight(words[i+1], "),") 
+		} else if words[i] == "(up," && i+1 < len(words) {
+			result := strings.TrimRight(words[i+1], "),")
 			text, err := strconv.Atoi(result)
 			if err != nil {
 				fmt.Println("Invalid")
@@ -33,6 +34,6 @@ func marvy(words []string) []string {
 	}
 	return words
 }
-func main () {
-	fmt.Println(marvy([]string{"this", "is", "so", "fun", "(up", "2)"}))
+func main() {
+	fmt.Println(marvy([]string{"this", "is", "so", "fun", "(up,", "2)"}))
 }
