@@ -8,14 +8,14 @@ import (
 
 func marvy(words []string) []string {
 	for i := 0; i < len(words); i++ {
-		if words[i] == "(up)" {
+		if words[i] == "(low)" {
 			if i > 0 {
-				words[i-1] = strings.ToUpper(words[i-1])
+				words[i-1] = strings.ToLower(words[i-1])
 			}
 			words = append(words[:i], words[i+1:]...)
 			i--
-		} else if words[i] == "(up," && i+1 < len(words) {
-			result := strings.TrimRight(words[i+1], "),")
+		} else if words[i] == "(low," && i+1 < len(words) {
+			result := strings.TrimSuffix(words[i+1], ")")
 			text, err := strconv.Atoi(result)
 			if err != nil {
 				fmt.Println("Invalid")
@@ -25,7 +25,7 @@ func marvy(words []string) []string {
 			}
 			for j := 1; j <= text; j++ {
 				if i-j >= 0 {
-					words[i-j] = strings.ToUpper(words[i-j])
+					words[i-j] = strings.ToLower(words[i-j])
 				}
 			}
 			words = append(words[:i], words[i+2:]...)
@@ -34,6 +34,8 @@ func marvy(words []string) []string {
 	}
 	return words
 }
+
+
 func main() {
-	fmt.Println(marvy([]string{"this", "is", "so", "fun", "(up,", "2)"}))
+	fmt.Println(marvy([]string{"this", "is", "SO", "FUN", "(low,", "2)"}))
 }

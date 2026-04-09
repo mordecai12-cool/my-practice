@@ -24,7 +24,7 @@ func hasPrefix(words []string) {
 }
 
 func main() {
-	hasPrefix([]string{"this", "is", "so", "fun", "(cap,", "3)"})
+	hasPrefix([]string{"this", "is", "So", "Fun", "(low,", "3)"})
 }
 func transform(cmd string, words []string) []string {
 	count := 1
