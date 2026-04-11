@@ -1,3 +1,5 @@
+package  
+/*
 package main
 
 import (
@@ -17,8 +19,8 @@ func capitalize(word string) string {
 func main() {
 	fmt.Println(capitalize("         learning string as a variable      "))
 }
-
-/*package main
+*/
+package main
 
 import (
 	"fmt"
