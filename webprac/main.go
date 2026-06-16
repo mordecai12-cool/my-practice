@@ -1,36 +1,37 @@
 package main
 
 import (
-	"fmt"
 	"html/template"
 	"net/http"
+	"fmt"
 )
 
-func homeHandler(w http.ResponseWriter, r *http.Request){
-	if r.URL.Path != "/"{
-		http.Error(w, "Page Not Fond", http.StatusNotFound)
+func homeHandler(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/" {
+		http.Error(w, "Not Found", http.StatusNotFound)
+		return
 	}
-
-	
-	if r.Method != http.MethodGet{
-		http.Error(w, "Internal Error", http.StatusInternalServerError)
+	if r.Method == "GET" {
+		templ, err := template.ParseFiles("templates/index.html")
+		if err != nil {
+			w.WriteHeader(http.StatusInternalServerError)
+			fmt.Fprintf(w, "fail to load page")
+			return
+		}
+		templ.Execute(w, nil)
 	}
-	tem, err := template.ParseFiles("template/index.html")
-	if err != nil{
-		http.Error(w, "Sever Error", http.StatusInternalServerError)
-	}
-	tem.Execute(w, nil)
 }
-func asciiHandler(w http.ResponseWriter, r *http.Request){
-	term, err := template.ParseFiles("template/index.html")
-	if err != nil{
-		http.Error(w, "internal marvelous error", http.StatusInternalServerError)
+func echoHandler(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path != "/echo" {
+		http.Error(w, "Not Found", http.StatusNotFound)
+		return
 	}
-	r.FormValue("text")
-	term.Execute(w, nil)
+	text := r.FormValue("input")
+	fmt.Fprintln(w, text)
 }
 func main() {
 	http.HandleFunc("/", homeHandler)
-	fmt.Println("http://localhost:8080")
+	http.HandleFunc("/echo", echoHandler)
+	fmt.Println("http://localhost:8080/")
 	http.ListenAndServe(":8080", nil)
 }
