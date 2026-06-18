@@ -14,11 +14,11 @@ func LoadBanner(filename string) (map[rune][]string, error) {
 	}
 
 	if len(data) == 0 {
-		return banner, errors.New("Empty file")
+		return banner, errors.New("banner is empty")
 	}
 	lines := strings.Split(string(data), "\n")
-	if len(lines) < 855 {
-		return banner, errors.New("Invalid file")
+	if len(lines) != 856 {
+		return banner, errors.New("banner is corrupt")
 	}
 
 	for ch := 32; ch <= 126; ch++ {
