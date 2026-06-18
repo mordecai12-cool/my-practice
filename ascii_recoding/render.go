@@ -3,8 +3,8 @@ package main
 func RenderLine(lines string, banner map[rune][]string) []string {
 	result := make([]string, 8)
 
-	for _, ch := range lines {
-		for row := 0; row < 8; row++ {
+	for row := 0; row < 8; row++ {
+		for _, ch := range lines {
 			result[row] += banner[ch][row]
 		}
 	}
